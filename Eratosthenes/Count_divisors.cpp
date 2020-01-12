@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
- 
+
 using namespace std;
- 
+
 const int nmax = 1000007;
-int n, cnt[2*nmax];
- 
+int cnt[2*nmax];
+int t, n;
+
 void cnt_divisor()
 {
     for (int i = 1; i*i <= nmax; ++i)
@@ -13,11 +14,16 @@ void cnt_divisor()
         cnt[i*j] += 1 + (i!=j);
     }
 }
- 
+
 int main()
 {
-    cin >> n;
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     cnt_divisor();
-    cout << cnt[n] << '\n';
+    cin >> t;
+    while (t--)
+    {
+        cin >> n;
+        cout << cnt[n] << '\n';
+    }
     return 0;
 }

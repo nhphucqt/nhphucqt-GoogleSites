@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
- 
+
 using namespace std;
- 
+
 const int nmax = 10000007;
-int n, min_d[nmax*2];
- 
+int min_d[nmax*2];
+int t, n;
+
 void min_divisor()
 {
     for (int i = 2; i <= nmax; ++i) min_d[i] = i;
@@ -17,11 +18,16 @@ void min_divisor()
             }
     }
 }
- 
+
 int main()
 {
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     min_divisor();
-    cin >> n;
-    cout << min_d[n];
+    cin >> t;
+    while (t--)
+    {
+        cin >> n;
+        cout << min_d[n] << '\n';
+    }
     return 0;
 }

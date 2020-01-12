@@ -3,7 +3,8 @@
 using namespace std;
 
 const int nmax = 1000007;
-int n, sum[2*nmax];
+int sum[2*nmax];
+int t, n;
 
 void sum_divisor()
 {
@@ -17,8 +18,13 @@ void sum_divisor()
 
 int main()
 {
-    cin >> n;
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     sum_divisor();
-    cout << sum[n] << '\n';
+    cin >> t;
+    while (t--)
+    {
+        cin >> n;
+        cout << sum[n] << '\n';
+    }
     return 0;
 }

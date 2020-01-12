@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
- 
+
 using namespace std;
- 
+
 const int nmax = 1000007;
-int n, sum[2*nmax];
- 
+int sum[2*nmax];
+int t, n;
+
 void sum_divisor()
 {
     for (int i = 1; i*i <= nmax; ++i)
@@ -13,11 +14,16 @@ void sum_divisor()
         sum[i*j] += i + j*(i!=j);
     }
 }
- 
+
 int main()
 {
-    cin >> n;
+    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     sum_divisor();
-    cout << sum[n] << '\n';
+    cin >> t;
+    while (t--)
+    {
+        cin >> n;
+        cout << sum[n] << '\n';
+    }
     return 0;
 }
