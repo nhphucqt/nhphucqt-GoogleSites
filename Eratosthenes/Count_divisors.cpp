@@ -3,7 +3,7 @@
 using namespace std;
 
 const int nmax = 1000007;
-int cnt[2*nmax];
+int cnt_d[2*nmax];
 int t, n;
 
 void cnt_divisor()
@@ -11,7 +11,7 @@ void cnt_divisor()
     for (int i = 1; i*i <= nmax; ++i)
     for (int j = i; j <= nmax/i; ++j)
     {
-        cnt[i*j] += 1 + (i!=j);
+        cnt_d[i*j] += 1 + (i!=j);
     }
 }
 
@@ -23,7 +23,7 @@ int main()
     while (t--)
     {
         cin >> n;
-        cout << cnt[n] << '\n';
+        cout << cnt_d[n] << '\n';
     }
     return 0;
 }
