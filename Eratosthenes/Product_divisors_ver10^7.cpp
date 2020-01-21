@@ -42,7 +42,7 @@ int product(const int& n) // Tinh tich uoc so cua n
 {
     int x = cnt_d(n);
     long long p = Pow(n, x/2);
-    if (x % 2 == 0) p = p * int(sqrt(n)) % MOD; // neu n^x la so chinh phuong (x chan)
+    if (x % 2 == 0) p = p * int(sqrt(n)) % MOD; // neu n la so chinh phuong
     return p;
 }
 
