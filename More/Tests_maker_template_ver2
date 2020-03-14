@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+// global const of tests maker
+const string name = "tests_name"; // Name of tests
+const int n_tests = 100; // Number of tests
+const int len_id = 3; // You should make len_id >= len(n_tests)
+const string ex_in = ".inp";
+const string ex_out = ".out";
+
+// Sub programs
+string To_str(int n) // standard sub program
+{
+    string s = "";
+    while (n > 0)
+    {
+        s = char(n%10 + 48) + s;
+        n /= 10;
+    }
+    while (s.size() < len_id) s = "0" + s;
+    return s;
+}
+//
+
+void make_test(string id_s, int id)
+{
+    string dir = name + '\\' + id_s;
+    string inpfi = name + ex_in;
+    string outfi = name + ex_out;
+    ofstream inp(inpfi);
+
+    // create input
+    
+    inp.close();
+
+    // run code and copy files
+    system((name + ".exe").c_str());
+    system(("md " + dir).c_str());
+    system(("copy " + inpfi + ' ' + dir).c_str());
+    system(("copy " + outfi + ' ' + dir).c_str());
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(0); cout.tie(0);
+    srand(time(NULL));
+    system(("rd /s /q " + name).c_str());
+    system(("md " + name).c_str());
+    system(("g++ " + name + ".cpp " + " -o " + name + ".exe").c_str());
+    for (int it = 1; it <= n_tests; ++it)
+    {
+        string id = To_str(it);
+        make_test(id, it);
+        cerr << "Test " << it << ": Completed!\n";
+    }
+    return 0;
+}
