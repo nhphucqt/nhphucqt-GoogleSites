@@ -96,7 +96,7 @@ int main()
         string id = To_str(it);
         system(("md " + name + '\\' + id).c_str());
         make_test(id, it);
-        cout << "Test " << it << ": Completed!\n";
+        cerr << "Test " << it << ": Completed!\n";
     }
     return 0;
 }
