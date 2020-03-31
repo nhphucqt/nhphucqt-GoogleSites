@@ -4,7 +4,7 @@ using namespace std;
  
 int a, n, MOD;
  
-int Pow(const int& a, const int& n, const int& MOD)
+int Pow(int a, int n, int MOD)
 {
     long long p = 1;
     for (int i = 1; i <= n; ++i)
