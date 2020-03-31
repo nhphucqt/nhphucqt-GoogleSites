@@ -9,20 +9,6 @@ const int len_id = 3; // You should make len_id >= len(n_tests)
 const string ex_in = ".inp";
 const string ex_out = ".out";
 
-// Sub programs
-string To_str(int n) // standard sub program
-{
-    string s = "";
-    while (n > 0)
-    {
-        s = char(n%10 + 48) + s;
-        n /= 10;
-    }
-    while (s.size() < len_id) s = "0" + s;
-    return s;
-}
-//
-
 void make_test(string id_s, int id)
 {
     string dir = name + '\\' + id_s;
@@ -50,7 +36,7 @@ int main()
     system(("g++ " + name + ".cpp " + " -o " + name + ".exe").c_str());
     for (int it = 1; it <= n_tests; ++it)
     {
-        string id = To_str(it);
+        string id = to_string(it);
         make_test(id, it);
         cerr << "Test " << it << ": Completed!\n";
     }
