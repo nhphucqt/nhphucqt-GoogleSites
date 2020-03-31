@@ -5,7 +5,7 @@ using namespace std;
 const long long MOD = 1000000007;
 int a, n, m;
  
-int Pow(const int& a, const int& n, const int& MOD)
+int Pow(int a, int n, int MOD)
 {
     if (n == 0) return 1;
     long long tmp = Pow(a, n/2, MOD);
