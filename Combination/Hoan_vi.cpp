@@ -12,7 +12,7 @@ void print()
     cout << '\n';
 }
  
-void hv(const int& pos)
+void hv(int pos)
 {
     for(int i = 1; i <= n; ++i)
     {
@@ -29,7 +29,7 @@ void hv(const int& pos)
  
 int main()
 {
-    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    ios_base::sync_with_stdio(0); cout.tie(0);
     cin >> n;
     hv(1);
     return 0;
