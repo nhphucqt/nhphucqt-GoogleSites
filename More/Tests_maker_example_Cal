@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-
+ 
 using namespace std;
-
+ 
 // global const of tests maker
 const string name = "Cal"; // Name of tests
 const int n_tests = 100; // Number of tests
@@ -9,22 +9,10 @@ const int len_id = 3; // You should make len_id >= len(n_tests)
 const string ex_in = ".inp";
 const string ex_out = ".out";
 //
-
+ 
 typedef long long ll;
-
+ 
 // Sub programs
-string To_str(int n)
-{
-    string s = "";
-    while (n > 0)
-    {
-        s = char(n%10 + 48) + s;
-        n /= 10;
-    }
-    while (s.size() < len_id) s = "0" + s;
-    return s;
-}
-
 bool prime(int n)
 {
     if (n < 2) return false;
@@ -36,7 +24,7 @@ bool prime(int n)
     return true;
 }
 //
-
+ 
 // Output programs
 int Cal(ll n, ll k, int MOD)
 {
@@ -46,18 +34,18 @@ int Cal(ll n, ll k, int MOD)
     else return (1 + n*(1+n)%MOD * Cal(n*n%MOD, (k-2)/2, MOD)) % MOD;
 }
 //
-
+ 
 void make_test(string id_s, int id)
 {
     ofstream inp(name + '\\' + id_s + '\\' + name + ex_in);
     ofstream out(name + '\\' + id_s + '\\' + name + ex_out);
-
+ 
     const int p6 = 1e6;
     const int p9 = 2e9;
     const ll p18 = 1e18;
     ll n, k;
     int MOD;
-
+ 
     // start process
     n = 1ll * rand() * rand() * rand() * rand() % p18;
     k = 1ll * rand() * rand() * rand() * rand() % p18;
@@ -80,11 +68,11 @@ void make_test(string id_s, int id)
     }
     out << Cal(n%MOD, k, MOD);
     // end process
-
+ 
     inp.close();
     out.close();
 }
-
+ 
 int main()
 {
     ios_base::sync_with_stdio(0); cout.tie(0);
@@ -93,7 +81,7 @@ int main()
     system(("md " + name).c_str());
     for (int it = 1; it <= n_tests; ++it)
     {
-        string id = To_str(it);
+        string id = to_string(it);
         system(("md " + name + '\\' + id).c_str());
         make_test(id, it);
         cerr << "Test " << it << ": Completed!\n";
