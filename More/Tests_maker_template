@@ -11,17 +11,7 @@ const string ex_out = ".out";
 //
 
 // Sub programs
-string To_str(int n)
-{
-    string s = "";
-    while (n > 0)
-    {
-        s = char(n%10 + 48) + s;
-        n /= 10;
-    }
-    while (s.size() < len_id) s = "0" + s;
-    return s;
-}
+
 //
 
 // Output programs
@@ -49,7 +39,7 @@ int main()
     system(("md " + name).c_str());
     for (int it = 1; it <= n_tests; ++it)
     {
-        string id = To_str(it);
+        string id = to_string(it);
         system(("md " + name + '\\' + id).c_str());
         make_test(id, it);
         cerr << "Test " << it << ": Completed!\n";
