@@ -4,7 +4,7 @@ using namespace std;
  
 long long n;
  
-bool nt(const long long& n)
+bool nt(long long n)
 {
     if (n < 2) return false;
     for (int i = 2; i <= sqrt(n); ++i)
