@@ -5,7 +5,7 @@ using namespace std;
 long long a, n;
 int MOD;
  
-int Pow(const long long& a, const long long& n, const int& MOD)
+int Pow(long long a, long long n, int MOD)
 {
     if (n == 0) return 1;
     if (n == 1) return a;
