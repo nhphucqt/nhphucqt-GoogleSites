@@ -11,7 +11,7 @@ void print()
     cout << '\n';
 }
  
-void chon(const int& pos)
+void chon(int pos)
 {
     for (int i = 0; i <= k-1; ++i)
     {
@@ -23,7 +23,7 @@ void chon(const int& pos)
  
 int main()
 {
-    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    ios_base::sync_with_stdio(0); cout.tie(0);
     cin >> k >> n;
     chon(1);
     return 0;
