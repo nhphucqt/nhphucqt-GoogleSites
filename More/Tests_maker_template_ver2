@@ -37,6 +37,7 @@ int main()
     for (int it = 1; it <= n_tests; ++it)
     {
         string id = to_string(it);
+        while (id.size() < len_id) id = '0' + id;
         make_test(id, it);
         cerr << "Test " << it << ": Completed!\n";
     }
