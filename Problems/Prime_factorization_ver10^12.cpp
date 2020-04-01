@@ -28,7 +28,7 @@ vector<pair<ll,int>> factorize(ll n)
 
 int main()
 {
-    ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    ios_base::sync_with_stdio(0); cout.tie(0);
     cin >> n;
     auto f = factorize(n);
     for (auto p : f) cout << p.X << ' ' << p.Y << '\n';
