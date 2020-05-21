@@ -3,7 +3,7 @@
 using namespace std;
 
 const int nmax = 1e7+7;
-int max_d[nmax+1], min_d[nmax+1];
+int max_d[nmax+1];
 int t, n;
 
 void max_divisor()
