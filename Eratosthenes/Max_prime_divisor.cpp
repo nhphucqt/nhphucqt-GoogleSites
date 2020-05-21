@@ -2,8 +2,8 @@
 
 using namespace std;
 
-const int nmax = 10000007;
-int max_d[2*nmax];
+const int nmax = 1e7+7;
+int max_d[nmax+1], min_d[nmax+1];
 int t, n;
 
 void max_divisor()
@@ -12,7 +12,8 @@ void max_divisor()
     for (int i = 2; i*i <= nmax; ++i)
         if (max_d[i] == i)
             for (int j = i; j <= nmax/i; ++j)
-                max_d[i*j] = i;
+                if (i < max_d[j]) max_d[i*j] = max_d[j];
+                else max_d[i*j] = i;
 }
 
 int main()
