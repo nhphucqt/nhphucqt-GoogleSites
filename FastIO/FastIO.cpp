@@ -3,7 +3,7 @@
 using namespace std;
 
 template<typename T>
-inline read(T &x)
+inline void read(T &x)
 {
     bool neg = false;
     char c;
@@ -16,7 +16,7 @@ inline read(T &x)
 }
 
 template<typename T>
-inline write(T x)
+inline void write(T x)
 {
     if (x < 0) { putchar('-'); x = -x; }
     T tmp = x/10, de = 1;
@@ -25,7 +25,7 @@ inline write(T x)
 }
 
 template<typename T>
-inline writeln(T x)
+inline void writeln(T x)
 {
     write(x);
     putchar('\n');
