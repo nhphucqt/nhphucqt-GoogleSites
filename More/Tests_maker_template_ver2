@@ -33,7 +33,7 @@ int main()
     srand(time(NULL));
     system(("rd /s /q " + name).c_str());
     system(("md " + name).c_str());
-    system(("g++ " + name + ".cpp " + " -o " + name + ".exe").c_str());
+    system(("g++ -std=c++14 " + name + ".cpp -o " + name + ".exe").c_str());
     for (int it = 1; it <= n_tests; ++it)
     {
         string id = to_string(it);
