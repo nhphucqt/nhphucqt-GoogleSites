@@ -1,0 +1,4 @@
+- mulmod.cpp chứa tất cả các code nhân modulo 2 sưu tầm được
+- calculate tính số lượng test sai trong 10^6 test
+- time_execution tính thời gian chạy từng code trong từng trường hợp test
+- file mulmod_time.xlsx lưu kết quả thống kê thời gian từng code
