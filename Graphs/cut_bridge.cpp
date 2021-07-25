@@ -24,7 +24,7 @@ void dfs(int u) {
            numChild[u]++;
            dfs(v);
            low[u] = min(low[u], low[v]);
-           if (num[u] < low[v]) edge[i].isBridge = true;
+           edge[i].isBridge |= num[u] < low[v];
            isCut[u] |= num[u] <= low[v];
        }
        else {
