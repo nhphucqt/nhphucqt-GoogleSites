@@ -15,8 +15,7 @@ void compress(vector<int>&v) {
 }
 
 void compress2(vector<int>&v) {
-    const int N = 1e5+7;
-    int *tmp[N];
+    int *tmp[v.size()];
     for (int i = 0; i < v.size(); ++i) {
         tmp[i] = &v[i];
     }
