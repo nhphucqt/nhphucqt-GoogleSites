@@ -2,35 +2,34 @@
 
 using namespace std;
 
-template<typename T> bool getbit(T x, int k) { 
-    return (x >> k) & T(1); 
-}
-template<typename T> void turnon(T&x, int k) { 
-    x |= T(1)<<k; 
-}
-template<typename T> void turnoff(T&x, int k) { 
-    x &= ~(T(1)<<k); 
-}
-template<typename T> void setbit(T&x, int k, bool b) { 
-    x = x & ~(T(1)<<k) | (T(b)<<k);
-}
-
-template<typename T> string toBin(T x, int len) {
-    string s; if (x == 0) s = "0";
-    while (x > 0) { s += (x&1) + '0'; x >>= 1LL; }
-    assert(s.size() <= len);
-    while (s.size() < len) s += '0';
-    reverse(s.begin(),s.end());
-    return s;
-}
-
-struct dynamic_bitset {
+class dynamic_bitset {
+private:
     typedef uint64_t intType;
     const int NUMBIT = 64, NUMBITMASK = 63, LOGNUMBIT = 6;
-    int size; // number of bits
     vector<intType> v;
-
-    dynamic_bitset() { 
+    template<typename T> static bool getbit(T x, int k) { 
+        return (x >> k) & T(1); 
+    }
+    template<typename T> static void turnon(T&x, int k) { 
+        x |= T(1)<<k; 
+    }
+    template<typename T> static void turnoff(T&x, int k) { 
+        x &= ~(T(1)<<k); 
+    }
+    template<typename T> static void setbit(T&x, int k, bool b) {
+        x = x & ~(T(1)<<k) | (T(b)<<k);
+    }
+    template<typename T> static string toBin(T x, int len) {
+        string s; if (x == 0) s = "0";
+        while (x > 0) { s += (x&1) + '0'; x >>= 1LL; }
+        assert(s.size() <= len);
+        while (s.size() < len) s += '0';
+        reverse(s.begin(),s.end());
+        return s;
+    }
+public:
+    int size; // number of bits
+    dynamic_bitset() {
         size = 0; 
         v = vector<intType>(); 
     }
@@ -38,9 +37,13 @@ struct dynamic_bitset {
         v.assign((n>>LOGNUMBIT)+bool(n&NUMBITMASK), 0); 
         size = v.size()<<LOGNUMBIT; 
     }
-    void resize(int s) { 
+    void assign(int s) {
         size = s<<LOGNUMBIT; 
         v.assign(s, 0);
+    }
+    void resize(int s) {
+        size = s<<LOGNUMBIT;
+        v.resize(s, 0);
     }
 
     bool test(int i) const { 
@@ -81,34 +84,34 @@ struct dynamic_bitset {
     
     dynamic_bitset operator & (const dynamic_bitset &b) const {
         assert(size == b.size);
-        dynamic_bitset res; res.resize(v.size());
+        dynamic_bitset res; res.assign(v.size());
         for (int i = 0; i < v.size(); ++i) {
             res.v[i] = v[i] & b.v[i];
         } return res;
     }
     dynamic_bitset operator | (const dynamic_bitset &b) const {
         assert(size == b.size);
-        dynamic_bitset res; res.resize(v.size());
+        dynamic_bitset res; res.assign(v.size());
         for (int i = 0; i < v.size(); ++i) {
             res.v[i] = v[i] | b.v[i];
         } return res;
     }
     dynamic_bitset operator ^ (const dynamic_bitset &b) const {
         assert(size == b.size);
-        dynamic_bitset res; res.resize(v.size());
+        dynamic_bitset res; res.assign(v.size());
         for (int i = 0; i < v.size(); ++i) {
             res.v[i] = v[i] ^ b.v[i];
         } return res;
     }
     dynamic_bitset operator ~ () const {
-        dynamic_bitset res; res.resize(v.size());
+        dynamic_bitset res; res.assign(v.size());
         for (int i = 0; i < v.size(); ++i) {
             res.v[i] = ~v[i];
         } return res;
     }
     dynamic_bitset operator << (int k) const {
         assert(k >= 0);
-        dynamic_bitset res; res.resize(v.size());
+        dynamic_bitset res; res.assign(v.size());
         if (k < size) {
             int v_pos = (size-1 - k) >> LOGNUMBIT;
             int bit_pos = (size-1 - k) & NUMBITMASK;
@@ -123,7 +126,7 @@ struct dynamic_bitset {
     }
     dynamic_bitset operator >> (int k) const {
         assert(k >= 0);
-        dynamic_bitset res; res.resize(v.size());
+        dynamic_bitset res; res.assign(v.size());
         if (k < size) {
             int v_pos = k >> LOGNUMBIT;
             int bit_pos = k & NUMBITMASK;
